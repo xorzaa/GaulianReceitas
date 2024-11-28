@@ -1,17 +1,21 @@
 package com.example.galuianreceitas
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.galuianreceitas.data.DatabaseBuilder
 import com.example.galuianreceitas.data.ReceitaRepository
 import com.example.galuianreceitas.viewmodel.ReceitaViewModel
 import com.example.galuianreceitas.viewmodel.ReceitaViewModelFactory
+import com.example.galuianreceitas.ui.ReceitaAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    // Inicializar o ViewModel com o ViewModelFactory
     private val viewModel: ReceitaViewModel by viewModels {
         ReceitaViewModelFactory(ReceitaRepository(DatabaseBuilder.getDatabase(this).receitaDao()))
     }
@@ -20,15 +24,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Observar as receitas
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        val searchButton: Button = findViewById(R.id.search_button)
+        val ingredientsInput: EditText = findViewById(R.id.ingredients_input)
+
+        val adapter = ReceitaAdapter(emptyList())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
         viewModel.receitas.observe(this, Observer { receitas ->
-            // Atualize a interface do usuário com as receitas
-            receitas.forEach { receita ->
-                println("Receita: ${receita.nome}")
-            }
+            adapter.receitas = receitas
+            adapter.notifyDataSetChanged()
         })
 
-        // Carregar as receitas ao iniciar o app
-        viewModel.carregarReceitas()
+        searchButton.setOnClickListener {
+            val ingredientes = ingredientsInput.text.toString()
+            if (ingredientes.isNotEmpty()) {
+                viewModel.buscarReceitasPorIngredientes(ingredientes)
+            }
+        }
     }
 }

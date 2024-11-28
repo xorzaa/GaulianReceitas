@@ -1,0 +1,54 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Campo Nome da Receita -->
+        <EditText
+            android:id="@+id/etNomeReceita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome da Receita"
+            android:inputType="text" />
+
+        <!-- Campo Ingredientes -->
+        <EditText
+            android:id="@+id/etIngredientes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingredientes (separados por vírgula)"
+            android:inputType="textMultiLine"
+            android:minLines="3" />
+
+        <!-- Campo Modo de Preparo -->
+        <EditText
+            android:id="@+id/etModoPreparo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Modo de Preparo"
+            android:inputType="textMultiLine"
+            android:minLines="5" />
+
+        <!-- Campo Tempo de Preparo -->
+        <EditText
+            android:id="@+id/etTempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tempo de Preparo (em minutos)"
+            android:inputType="number" />
+
+        <!-- Botão Salvar -->
+        <Button
+            android:id="@+id/btnSalvarReceita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar Receita" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,35 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvNomeDetalhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da Receita"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvIngredientesDetalhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredientes"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvModoPreparoDetalhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modo de Preparo"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnCompartilharReceita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Compartilhar Receita"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
