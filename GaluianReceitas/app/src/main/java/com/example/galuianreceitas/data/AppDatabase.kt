@@ -1,6 +1,6 @@
 package com.example.galuianreceitas.data
 
-import ReceitaDao
+import com.example.galuianreceitas.data.ReceitaDao
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.galuianreceitas.data.Receita

@@ -5,10 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "receitas")
 data class Receita(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
     val nome: String,
     val ingredientes: String,
     val modoPreparo: String,
-    val tempoExecucao: String,
-    val categoria: String
+    val tempo: Int,
+    val categoria: String // Adicionado o campo 'categoria'
 )

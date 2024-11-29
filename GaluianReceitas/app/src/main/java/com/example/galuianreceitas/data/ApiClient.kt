@@ -1,19 +1,23 @@
 package com.example.galuianreceitas.api
 
+import com.example.galuianreceitas.data.ReceitaAPI
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.OkHttpClient
 
 object ApiClient {
-    private const val BASE_URL = "https://api.spoonacular.com/"
 
-    private val client = OkHttpClient.Builder().build()
+    private const val BASE_URL = "https://api.spoonacular.com/" // URL base da API
 
-    val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
+    // Inicializa o Retrofit
+    private val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
-    val receitaApi: ReceitaAPI = retrofit.create(ReceitaAPI::class.java)
+    // Método para acessar a API
+    fun getApiService(): ReceitaAPI {
+        return retrofit.create(ReceitaAPI::class.java)
+    }
 }
